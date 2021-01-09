@@ -55,7 +55,7 @@ local DirFol = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all'):gsub(' ','
 user = {}
 user.username = SUDO_USER
 user.Source  = "/root/Monster"
-local url , res = https.request('https://api.modzx_dev.com/GetID/?Array='..JSON.encode(user))
+local url , res = https.request('https://api.th3boss.com/GetID/?Array='..JSON.encode(user))
 print(res)
 if res ~= 200 then
 print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
