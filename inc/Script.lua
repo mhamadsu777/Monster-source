@@ -183,7 +183,7 @@ uuuu = arg.UserName:gsub("@","")
 sendMsg(arg.ChatID,arg.MsgID,"["..data.title_.."](t.me/"..uuuu..")")
 end,{ChatID=msg.chat_id_,MsgID=msg.id_,UserName=info.username})
 else
-message = message..' ['..info.username..'](t.me/TH3bs)  \n'
+message = message..' ['..info.username..'](t.me/modzx_dev)  \n'
 sendMsg(msg.chat_id_,msg.id_,message)
 end
 
@@ -3071,7 +3071,7 @@ end
 
 if (MsgText[1] == 'تحديث السورس' or MsgText[1] == 'تحديث السورس ™') then
 if not msg.SudoBase then return "📪¦ هذا الامر يخص {المطور الاساسي} فقط  \n" end
-local GetVerison = https.request('https://th3bs.github.io/GetVersion.txt') or "0"
+local GetVerison = https.request('https://modzx_dev.github.io/GetVersion.txt') or "0"
 GetVerison = GetVerison:gsub("\n",""):gsub(" ","")
 if GetVerison > version then
 UpdateSourceStart = true
@@ -3138,8 +3138,8 @@ end
 if (MsgText[1]== "ايدي" or MsgText[1]=="ايدي 🆔") and msg.type == "pv" then return  "\n"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس 📡" and msg.type == "pv" then
-local inline = {{{text="قنآهہ‏‏ آلسـورس : الـزعـيـم 🍃",url="t.me/th3bs"}}}
-send_key(msg.sender_user_id_,'  [قناة السورس : الـزعـيـم](t.me/th3bs)',nil,inline,msg.id_)
+local inline = {{{text="قنآهہ‏‏ آلسـورس : الـزعـيـم 🍃",url="t.me/modzx_dev"}}}
+send_key(msg.sender_user_id_,'  [قناة السورس : الـزعـيـم](t.me/modzx_dev)',nil,inline,msg.id_)
 return false
 end
 
@@ -3770,25 +3770,19 @@ Welcome To Source Monster
 
 🌐┇Monster TEAM 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📬┇ [Source Channel](https://t.me/TH3BS)
-
-📊┇ [Source Install](https://t.me/TH3BS/4121)
+📬┇ [Source Channel](https://t.me/modzx_dev)
 
 🆔┇ [Changing ID Channel](https://t.me/Change_id/1)
 
-📋┇ [Explanation Channel](https://t.me/SourceMonster/1)
-
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-📮┇ [Source Programmer](https://t.me/TH3Monster)
-
-♻️┇ [Twasl Bot Programmer](https://t.me/TH3MonsterBOT)
+📮┇ [Source Programmer](https://t.me/J_69_L)
 
 ]]
 end
 
 if MsgText[1] == "متجر الملفات" or MsgText[1]:lower() == "/store"  then
 if not msg.SudoBase then return "📪¦ هذا الامر يخص {المطور الاساسي} فقط  \n" end
-local Get_Files, res = https.request("https://th3bs.github.io/GetFiles.json")
+local Get_Files, res = https.request("https://modzx_dev.github.io/GetFiles.json")
 print(Get_Files)
 print(res)
 if res == 200 then
@@ -3828,7 +3822,7 @@ TText = "📑¦ الملف موجود بالفعل \n🔖¦ تم تحديث ال
 else
 TText = "🔖¦ تم تثبيت وتفعيل الملف بنجاح \n✓"
 end
-local Get_Files, res = https.request("https://raw.githubusercontent.com/TH3BS/th3bs.github.io/master/plugins/"..FileName)
+local Get_Files, res = https.request("https://raw.githubusercontent.com/mhamadsu777/Monster-source/main/plugins/"..FileName)
 if res == 200 then
 print("DONLOADING_FROM_URL: "..FileName)
 local FileD = io.open("plugins/"..FileName,'w+')
@@ -6096,7 +6090,7 @@ return sendMsg(msg.chat_id_,msg.id_,"حاضر مو تدلل حضره المطو�
 elseif msg.Creator then 
 return sendMsg(msg.chat_id_,msg.id_,"ع راسي تدلل انته المنشئ تاج راسي 😌")
 elseif msg.Director then 
-return sendMsg(msg.chat_id_,msg.id_,"لخاطرك راح اسكت لان مدير وع راسي  😌")
+return sendMsg(msg.chat_id_,msg.id_,"لخاطرك راح اسكت لان مدير وع راسي  ??")
 elseif msg.Admin then 
 return sendMsg(msg.chat_id_,msg.id_,"فوك مامصعدك ادمن ؟؟ انته انجب 😏")
 else 
