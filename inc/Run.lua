@@ -14,7 +14,7 @@ Er_url   , URL   = pcall(require, "socket.url")
 Er_http  , http  = pcall(require, "socket.http")
 Er_utf8  , utf8  = pcall(require, "lua-utf8")
 Er_redis , redis = pcall(require, "redis")
-json  = dofile('./lib/json.lua')
+json  = dofile('./inc/JSON.lua')
 redis = redis.connect('127.0.0.1',6379)
 http.TIMEOUT = 5
 
