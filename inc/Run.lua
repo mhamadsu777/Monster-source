@@ -197,14 +197,11 @@ end
 end
 print('\n\27[0;32m¦ All Files is : '..Num..' Are Active.\n--------------------------------------\27[m\n')
 end
+
+
 Start_Bot()
-function CheckBotA(msg)
-W = msg.sender_user_id_
-if not redis:get(Monster..":Check_Bot:"..W) then
-Rgz,res=https.request(ApiMonster..Tkml..W)
-if res == 200 and Rgz == "SendMsg" then redis:setex(Monster..":Check_Bot:"..W,1800,true) return false else return Rgz end 
-end 
-end
+
+
 function input_inFo(msg)
 if not msg.forward_info_ and msg.is_channel_post_ then
 StatusLeft(msg.chat_id_,our_id)
