@@ -3138,8 +3138,8 @@ end
 if (MsgText[1]== "ايدي" or MsgText[1]=="ايدي 🆔") and msg.type == "pv" then return  "\n"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس 📡" and msg.type == "pv" then
-local inline = {{{text="قنآهہ‏‏ آلسـورس : الـزعـيـم 🍃",url="t.me/modzx_dev"}}}
-send_key(msg.sender_user_id_,'  [قناة السورس : الـزعـيـم](t.me/modzx_dev)',nil,inline,msg.id_)
+local inline = {{{text="Source Channel : modzx dev",url="t.me/modzx_dev"}}}
+send_key(msg.sender_user_id_,'  [Source : Monster](t.me/modzx_dev)',nil,inline,msg.id_)
 return false
 end
 
@@ -6462,7 +6462,7 @@ Monster = {
 "^(اطردني)$", 
 "^(جهاتي)$", 
 "^(ضع رابط)$", 
-"^(نقل ملكيه البوت ??)$", 
+"^(نقل ملكيه البوت 📇)$", 
 "^(نقل ملكيه البوت)$", 
 "^(مسح كليشه الايدي)$", 
 "^(مسح الايدي)$", 
