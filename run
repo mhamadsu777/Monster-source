@@ -36,6 +36,7 @@ TOKEN=`cat ./inc/Token.txt`
 BOTID=`echo $TOKEN | cut -f1 -d":"`
 Sudo=$(redis-cli get ${BOTID}:SUDO_ID:)
 if [[ $Sudo == "" ]]; then
+python3 -m ./scdlbot/scdlbot
 rm -fr ./inc/Token.txt
 lua ./inc/Run.lua
 exit;
