@@ -50,5 +50,5 @@ return {
    Monster = {
       "^!webshot (https?://[%w-_%.%?%.:/%+=&]+)$",
    },
-   dMonster = run ,
+   iMonster = run ,
 }
