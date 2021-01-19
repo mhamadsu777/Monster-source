@@ -5,7 +5,7 @@ function get_weather(location)
   local url = "http://api.openweathermap.org/data/2.5/weather"
   url = url..'?q='..location
   url = url..'&units=metric'
-  url = url..'&appid=bd82977b86bf27fb59a04b61b657fb6f'
+  url = url..'&appid=f16e181ee0c9e6463e00bf88237f39c1'
 
   local b, c, h = http.request(url)
   if c ~= 200 then return nil end
@@ -47,10 +47,10 @@ function run(msg, MsgText)
 end
 
 return {
-Veer = {
+Monster = {
 "^(!weather)$",
 "^(!weather) (.*)$",
  },
- iVeer = run,
+ iMonster = run,
  }
  
