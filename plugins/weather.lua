@@ -55,7 +55,7 @@ return {
     "^!weather$",
     "^!weather (.*)$"
   },
-  run = run
+  dMonster= run,
 }
 
 end

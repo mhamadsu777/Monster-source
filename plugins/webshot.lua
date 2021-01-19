@@ -52,5 +52,5 @@ return {
    patterns = {
       "^!webshot (https?://[%w-_%.%?%.:/%+=&]+)$",
    },
-   run = run
+   dMonster = run ,
 }
