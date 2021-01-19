@@ -1,5 +1,3 @@
-local helpers = require "OAuth.helpers"
-
 local base = 'https://screenshotmachine.com/'
 local url = base .. 'processor.php'
 
