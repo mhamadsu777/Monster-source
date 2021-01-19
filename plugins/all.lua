@@ -1,5 +1,3 @@
-do
-data = load_data(_config.moderation.data)
 local function get_msgs_user_chat(user_id, chat_id)
   local user_info = {}
   local uhash = 'user:'..user_id
@@ -153,4 +151,3 @@ return {
   },
   run = run
 }
-end
