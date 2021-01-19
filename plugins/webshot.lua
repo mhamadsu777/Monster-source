@@ -47,7 +47,7 @@ return {
    usage = {
       "!webshot [url]: Take an screenshot of the web and send it back to you."
    },
-   patterns = {
+   Monster = {
       "^!webshot (https?://[%w-_%.%?%.:/%+=&]+)$",
    },
    dMonster = run ,
