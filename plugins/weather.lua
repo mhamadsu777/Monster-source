@@ -1,16 +1,12 @@
 
-function get_weather(location)
-  print("Finding weather in ", location)
+local function get_weather(location)
   location = location:gsub(" ","+")
-  local url = "http://api.openweathermap.org/data/2.5/weather"
-  url = url..'?q='..location
-  url = url..'&units=metric'
-  url = url..'&appid=f16e181ee0c9e6463e00bf88237f39c1'
+  print("Finding weather in "..location)
+  local urlw = "http://api.openweathermap.org/data/2.5/weather?q="..location.."&units=metric&appid=f16e181ee0c9e6463e00bf88237f39c1"
 
-  local b, c, h = http.request(url)
-  if c ~= 200 then return nil end
-
-  local weather = json:decode(b)
+  local url, res = http.request(urlw)
+  if res == 200 then
+  local weather = JSON.decode(url)
   local city = weather.name
   local country = weather.sys.country
   local temp = 'The temperature in '..city
@@ -28,22 +24,21 @@ function get_weather(location)
   elseif weather.weather[1].main == 'Thunderstorm' then
     conditions = conditions .. ' ☔☔☔☔'
   end
-
   return temp .. '\n' .. conditions
+else
+  return "Can't get weather from that city."
+end
 end
 
-function run(msg, MsgText)
+local function weather(msg, MsgText)
   if MsgText[1] == '!weather' then
   if not MsgText[2] then
-    text = "!weather (city)"
+  sendMsg(msg.chat_id_,msg.id_,"!weather (city)")
     else
-  local text = get_weather(MsgText[2])
-  if not text then
-    text = 'Can\'t get weather from that city.'
+  sendMsg(msg.chat_id_,msg.id_,get_weather(MsgText[2]))
   end
   end
-  end
-  return text
+  return false
 end
 
 return {
@@ -51,6 +46,6 @@ Monster = {
 "^(!weather)$",
 "^(!weather) (.*)$",
  },
- iMonster = run,
+ iMonster = weather,
  }
  
