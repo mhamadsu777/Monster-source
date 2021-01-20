@@ -12,7 +12,7 @@ local function tosticker(msg, success, result)
     send_large_msg(receiver, 'Failed, please try again!', ok_cb, false)
   end
 end
-local function run(msg,matches)
+local function run(msg,MsgText)
     local receiver = get_receiver(msg)
     local group = msg.to.id
     if msg.media then
@@ -22,7 +22,7 @@ local function run(msg,matches)
       		end
       	end
     end
-    if matches[1] == "tophoto" and is_momod(msg) then
+    if MsgText[1] == "tophoto" and is_momod(msg) then
     	redis:set("sticker:photo", "waiting")
     	return 'Please send your sticker now'
     end
