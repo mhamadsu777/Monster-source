@@ -33,12 +33,12 @@ end
 return {
   description = "When bot receives a media msg, download the media.",
   usage = "",
-  run = run,
-  patterns = {
+  iMonster = run,
+  Monster = {
     '%[(document)%]',
     '%[(photo)%]',
     '%[(video)%]',
     '%[(audio)%]'
   },
-  pre_process = pre_process
+  dMonster = pre_process
 }
