@@ -6,7 +6,7 @@ local function callback(extra, success, result)
   end
 end
 
-local function run(msg, matches)
+local function run(msg, MsgText)
   if msg.media then
     if msg.media.type == 'document' then
       load_document(msg.id, callback, msg.id)
@@ -33,12 +33,12 @@ end
 return {
   description = "When bot receives a media msg, download the media.",
   usage = "",
-  iMonster = run,
-  Monster = {
+  run = run,
+  patterns = {
     '%[(document)%]',
     '%[(photo)%]',
     '%[(video)%]',
     '%[(audio)%]'
   },
-  dMonster = pre_process,
+  pre_process = pre_process
 }
