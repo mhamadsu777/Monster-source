@@ -28,9 +28,9 @@ local function run(msg,matches)
     end
 end
 return {
-  patterns = {
+  Monster = {
 	"^[!/](tophoto)$",
 	"%[(document)%]",
   },
-  run = run,
+  iMonster = run,
 }
