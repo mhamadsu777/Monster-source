@@ -40,5 +40,5 @@ return {
     '%[(video)%]',
     '%[(audio)%]'
   },
-  dMonster = pre_process
+  dMonster = pre_process,
 }
