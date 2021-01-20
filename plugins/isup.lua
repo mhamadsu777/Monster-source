@@ -89,23 +89,23 @@ local function cron()
   end
 end
 
-local function run(msg, matches)
-  if matches[1] == 'cron delete' then
+local function run(msg, MsgText)
+  if MsgText[1] == 'cron delete' then
     if not is_sudo(msg) then 
       return 'This command requires privileged user'
     end
-    return save_cron(msg, matches[2], true)
+    return save_cron(msg, MsgText[2], true)
 
-  elseif matches[1] == 'cron' then
+  elseif MsgText[1] == 'cron' then
     if not is_sudo(msg) then 
       return 'This command requires privileged user'
     end
-    return save_cron(msg, matches[2])
+    return save_cron(msg, MsgText[2])
 
-  elseif isup(matches[1]) then
-    return matches[1]..' looks UP from here. 😃'
+  elseif isup(MsgText[1]) then
+    return MsgText[1]..' looks UP from here. 😃'
   else
-    return matches[1]..' looks DOWN from here. 😱'
+    return MsgText[1]..' looks DOWN from here. 😱'
   end
 end
 
@@ -116,7 +116,7 @@ return {
     "!isup cron [host]: Every 5mins check if host is up. (Requires privileged user)",
     "!isup cron delete [host]: Disable checking that host."
   },
-  patterns = {
+  Monster = {
     "^!isup (cron delete) (.*)$",
     "^!isup (cron) (.*)$",
     "^!isup (.*)$",
@@ -124,8 +124,8 @@ return {
     "^!ping (cron delete) (.*)$",
     "^!ping (cron) (.*)$"
   },
-  run = run,
-  cron = cron
+  iMonster = run,
+  dMonster = cron
 }
 
 end
