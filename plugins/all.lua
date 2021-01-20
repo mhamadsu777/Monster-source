@@ -125,7 +125,7 @@ local function all(target, receiver)
   return
 end
 
-function run(msg, matches)
+function allw(msg, matches)
   if matches[1] == "all" and matches[2] and is_owner2(msg.from.id, matches[2]) then
     local receiver = get_receiver(msg)
     local target = matches[2]
@@ -145,9 +145,9 @@ end
 
 
 return {
-  patterns = {
+  Monster = {
   "^[!/](all)$",
   "^[!/](all) (%d+)$"
   },
-  run = run
+  iMonster = allw
 }
