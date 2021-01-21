@@ -15,5 +15,5 @@ end
 end
 
 return {
-iSaied = translate
+iMonster = translate
 }
