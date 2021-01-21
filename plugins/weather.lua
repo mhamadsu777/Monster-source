@@ -43,8 +43,8 @@ end
 
 return {
 Monster = {
-"^(/weather)$",
-"^(/weather) (.*)$",
+"^(!weather)$",
+"^(!weather) (.*)$",
  },
  iMonster = weather,
  }
