@@ -46,7 +46,7 @@ end
 end
 
 return {
-Saied = {
+Mosnter = {
 "^(تفعيل الترجمة)$",
 "^(تفعيل الترجمه)$",
 "^(تعطيل الترجمة)$",
@@ -68,5 +68,5 @@ Saied = {
 "^(/uk)$",
 "^(/ko)$",
 	},
-iSaied = translate
+iMonster = translate
 }
